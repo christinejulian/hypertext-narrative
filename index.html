@@ -3,241 +3,288 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Game Creator Journey</title>
+<title>Christine_890: A Game Developer's Journey</title>
 
 <style>
 body{
     font-family: "Times New Roman", serif;
-    background: linear-gradient(cyan, forestgreen);
+    background: linear-gradient(midnightblue, black);
     color:white;
-    text-align:center;
-    padding:40px;
+    margin:0;
+    padding:20px;
+    line-height:1.6;
+    font-size:22px;
 }
 
-.container{
-    max-width:800px;
+#container{
+    max-width:900px;
     margin:auto;
-    background:rgba(0,0,0,0.4);
+    background:rgba(0,0,0,.7);
     padding:25px;
-    border-radius:15px;
+    border-radius:10px;
+}
+
+h1{
+    text-align:center;
 }
 
 button{
-    margin:10px;
-    padding:12px 20px;
+    display:block;
+    width:100%;
+    padding:15px;
+    margin:10px 0;
     font-size:18px;
     cursor:pointer;
     border:none;
-    border-radius:8px;
+    border-radius:5px;
 }
 
-.choice{
-    display:block;
-    width:100%;
-}
-
-#gameArea{
-    display:none;
-}
-
-a{
-    color:yellow;
-    font-weight:bold;
+button:hover{
+    background:#ddd;
 }
 
 #score{
-    font-size:24px;
-    margin-top:20px;
+    text-align:right;
+    font-size:20px;
+    margin-bottom:15px;
+}
+
+a{
+    color:gold;
 }
 </style>
 </head>
 <body>
 
-<div class="container">
+<div id="container">
 
-<h1>The Game Creator's Path</h1>
+<h1>Christine_890: The Path of a Game Creator</h1>
 
-<div id="story">
+<div id="score">Score: 0</div>
+
+<div id="game">
 
 <p>
-You are Christine, an aspiring game developer. Ever since you first played
-video games, you dreamed of creating worlds of your own. Every project begins
-with a choice.
+Greetings, esteemed friends and fellow enthusiasts of the gaming realm!
+I am Christine_890, a passionate game developer who dreams of creating
+memorable experiences for players around the world.
 </p>
 
 <p>
-Will you follow the path of the player or the creator?
+My journey begins with a simple question...
 </p>
 
-<button onclick="showStory('creator')">Become a Creator</button>
-<button onclick="showStory('player')">Stay a Player</button>
+<button onclick="question1()">Begin My Adventure</button>
 
 </div>
-
-<div id="chapter"></div>
-
-<div id="gameLink" style="display:none;">
-    <h2>Mini Game Unlocked!</h2>
-    <p>
-        Your journey has inspired you to test your knowledge.
-        Click below to start the quiz.
-    </p>
-
-    <button onclick="startGame()">Play Mini Game</button>
-</div>
-
-<div id="gameArea">
-
-    <h2 id="question"></h2>
-
-    <button class="choice" onclick="checkAnswer(0)"></button>
-    <button class="choice" onclick="checkAnswer(1)"></button>
-    <button class="choice" onclick="checkAnswer(2)"></button>
-    <button class="choice" onclick="checkAnswer(3)"></button>
-
-</div>
-
-<div id="score"></div>
-
 </div>
 
 <script>
 
-function showStory(path){
-
-    let chapter = document.getElementById("chapter");
-
-    if(path === "creator"){
-        chapter.innerHTML = `
-        <p>
-        You decide to become a creator. Instead of simply playing games,
-        you begin designing levels, writing stories, and imagining monsters,
-        heroes, and mysterious worlds.
-        </p>
-
-        <p>
-        Every challenge teaches you something new:
-        programming, art, sound, and storytelling.
-        Your dream is no longer playing games—
-        it is creating experiences for others.
-        </p>
-        `;
-    }
-    else{
-        chapter.innerHTML = `
-        <p>
-        You continue playing games and discover something surprising.
-        Every game makes you wonder:
-        "How was this built?"
-        </p>
-
-        <p>
-        Eventually curiosity wins. You begin learning game design,
-        turning your love of games into a passion for creating them.
-        </p>
-        `;
-    }
-
-    document.getElementById("gameLink").style.display = "block";
-}
-
-const questions = [
-
-{
-q:"What is your favorite part of game development?",
-a:["Creating worlds and gameplay","Doing taxes","Writing grocery lists","Washing dishes"],
-correct:0
-},
-
-{
-q:"Why do you create games?",
-a:["To share experiences with players","To count ceiling tiles","To avoid computers","To delete creativity"],
-correct:0
-},
-
-{
-q:"What skill helps a game developer most?",
-a:["Curiosity and learning","Ignoring feedback","Giving up quickly","Never testing"],
-correct:0
-},
-
-{
-q:"What makes an indie game special?",
-a:["Creative ideas and passion","The largest budget","Having no gameplay","Being unfinished"],
-correct:0
-},
-
-{
-q:"What is the reward of creating games?",
-a:["Seeing players enjoy your work","Nothing at all","More homework","Collecting dust"],
-correct:0
-}
-
-];
-
-let currentQuestion = 0;
 let score = 0;
 
-function startGame(){
-
-    document.getElementById("gameArea").style.display = "block";
-    document.getElementById("gameLink").style.display = "none";
-
-    loadQuestion();
+function updateScore(){
+    document.getElementById("score").innerHTML = "Score: " + score;
 }
 
-function loadQuestion(){
+function question1(){
+document.getElementById("game").innerHTML = `
+<h2>Chapter 1: My Inspiration</h2>
 
-    if(currentQuestion >= questions.length){
-        endGame();
-        return;
-    }
+<p>
+As a young creator, what inspired me the most?
+</p>
 
-    document.getElementById("question").innerText =
-        questions[currentQuestion].q;
-
-    let buttons = document.querySelectorAll(".choice");
-
-    for(let i=0;i<buttons.length;i++){
-        buttons[i].innerText = questions[currentQuestion].a[i];
-    }
+<button onclick="correct1()">Creating games and bringing ideas to life</button>
+<button onclick="wrong1()">Avoiding creativity</button>
+<button onclick="wrong1()">Ignoring imagination</button>
+`;
 }
 
-function checkAnswer(choice){
+function correct1(){
+score++;
+updateScore();
 
-    if(choice === questions[currentQuestion].correct){
-        score++;
-    }
+document.getElementById("game").innerHTML = `
+<h2>Correct!</h2>
 
-    currentQuestion++;
-    loadQuestion();
+<p>
+Creating games has always been my passion. Every project starts as an
+idea waiting to become reality.
+</p>
+
+<button onclick="question2()">Continue</button>
+`;
 }
 
-function endGame(){
+function wrong1(){
+document.getElementById("game").innerHTML = `
+<h2>Not Quite</h2>
 
-    document.getElementById("gameArea").innerHTML = "";
+<p>
+My true inspiration comes from creating games and exploring imagination.
+</p>
 
-    let message = "";
+<button onclick="question2()">Continue</button>
+`;
+}
 
-    if(score === 5){
-        message = "Master Game Creator!";
-    }
-    else if(score >= 3){
-        message = "Rising Indie Developer!";
-    }
-    else{
-        message = "Keep Learning and Creating!";
-    }
+function question2(){
+document.getElementById("game").innerHTML = `
+<h2>Chapter 2: Choosing My Tools</h2>
 
-    document.getElementById("score").innerHTML = `
-        <h2>Game Complete!</h2>
-        <p>Your Score: ${score}/${questions.length}</p>
-        <h3>${message}</h3>
-        <p>
-        Every great game starts with imagination.
-        Keep creating, experimenting, and building new worlds.
-        </p>
-    `;
+<p>
+Which game engines do I frequently use?
+</p>
+
+<button onclick="correct2()">Unity and Unreal Engine</button>
+<button onclick="wrong2()">Spreadsheet Software</button>
+<button onclick="wrong2()">Word Processors</button>
+`;
+}
+
+function correct2(){
+score++;
+updateScore();
+
+document.getElementById("game").innerHTML = `
+<h2>Correct!</h2>
+
+<p>
+Unity and Unreal Engine help me transform concepts into playable worlds.
+</p>
+
+<button onclick="question3()">Continue</button>
+`;
+}
+
+function wrong2(){
+document.getElementById("game").innerHTML = `
+<h2>Not Quite</h2>
+
+<p>
+Unity and Unreal Engine are the tools that power many of my creations.
+</p>
+
+<button onclick="question3()">Continue</button>
+`;
+}
+
+function question3(){
+document.getElementById("game").innerHTML = `
+<h2>Chapter 3: My Favorite Challenge</h2>
+
+<p>
+What excites me most about game development?
+</p>
+
+<button onclick="correct3()">Designing gameplay, stories, and worlds</button>
+<button onclick="wrong3()">Doing nothing with ideas</button>
+<button onclick="wrong3()">Avoiding experimentation</button>
+`;
+}
+
+function correct3(){
+score++;
+updateScore();
+
+document.getElementById("game").innerHTML = `
+<h2>Correct!</h2>
+
+<p>
+I love building gameplay mechanics, stories, and immersive experiences
+that players can enjoy.
+</p>
+
+<button onclick="question4()">Continue</button>
+`;
+}
+
+function wrong3(){
+document.getElementById("game").innerHTML = `
+<h2>Not Quite</h2>
+
+<p>
+The joy of development comes from creating worlds players can explore.
+</p>
+
+<button onclick="question4()">Continue</button>
+`;
+}
+
+function question4(){
+document.getElementById("game").innerHTML = `
+<h2>Chapter 4: Looking Ahead</h2>
+
+<p>
+What is one of my biggest goals?
+</p>
+
+<button onclick="correct4()">Leave a lasting mark on the gaming industry</button>
+<button onclick="wrong4()">Stop creating games forever</button>
+<button onclick="wrong4()">Avoid innovation</button>
+`;
+}
+
+function correct4(){
+score++;
+updateScore();
+ending();
+}
+
+function wrong4(){
+ending();
+}
+
+function ending(){
+
+let message = "";
+
+if(score === 4){
+message = `
+<h2>Master Developer Ending</h2>
+
+<p>
+You understand my journey perfectly. My dream is to create meaningful,
+immersive experiences that inspire players and showcase the power of
+interactive storytelling.
+</p>
+`;
+}
+else if(score >= 2){
+message = `
+<h2>Creative Explorer Ending</h2>
+
+<p>
+You know much about my passion for game development. Every project is
+another step toward building worlds that players will remember.
+</p>
+`;
+}
+else{
+message = `
+<h2>New Adventurer Ending</h2>
+
+<p>
+You have just begun learning about my journey. The path of game
+development is filled with creativity, challenges, and endless
+possibilities.
+</p>
+`;
+}
+
+document.getElementById("game").innerHTML = `
+${message}
+
+<p><strong>Final Score: ${score}/4</strong></p>
+
+<p>
+Thank you for exploring my story as Christine_890. Every game I create
+is another opportunity to turn imagination into reality.
+</p>
+
+<button onclick="location.reload()">Play Again</button>
+`;
 }
 
 </script>
