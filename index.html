@@ -1,166 +1,243 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Game Developer's Journey</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Game Creator Journey</title>
 
 <style>
 body{
     font-family: "Times New Roman", serif;
     background: linear-gradient(cyan, forestgreen);
-    color: white;
-    text-align: center;
-    padding: 40px;
-    font-size: 25px;
+    color:white;
+    text-align:center;
+    padding:40px;
 }
 
-#game{
-    background: rgba(0,0,0,0.5);
-    padding: 20px;
-    border-radius: 15px;
-    max-width: 900px;
-    margin: auto;
+.container{
+    max-width:800px;
+    margin:auto;
+    background:rgba(0,0,0,0.4);
+    padding:25px;
+    border-radius:15px;
+}
+
+button{
+    margin:10px;
+    padding:12px 20px;
+    font-size:18px;
+    cursor:pointer;
+    border:none;
+    border-radius:8px;
+}
+
+.choice{
+    display:block;
+    width:100%;
+}
+
+#gameArea{
+    display:none;
 }
 
 a{
-    color: yellow;
-    text-decoration: none;
-    font-weight: bold;
+    color:yellow;
+    font-weight:bold;
 }
 
-a:hover{
-    color: orange;
-}
-
-h1{
-    text-shadow: 2px 2px 5px black;
+#score{
+    font-size:24px;
+    margin-top:20px;
 }
 </style>
-
-<script>
-function showScene(scene){
-    document.getElementById("story").innerHTML = scene;
-}
-</script>
-
 </head>
-
 <body>
 
-<div id="game">
+<div class="container">
 
-<h1>The Game Developer's Journey</h1>
+<h1>The Game Creator's Path</h1>
 
 <div id="story">
 
 <p>
-You are Christine, a passionate game developer who dreams of creating unforgettable worlds.
-One evening, while working on a new project, you discover a mysterious folder labeled
-<b>"Ultimate Game."</b>
+You are Christine, an aspiring game developer. Ever since you first played
+video games, you dreamed of creating worlds of your own. Every project begins
+with a choice.
 </p>
 
 <p>
-Do you
-<a href="#" onclick="showScene(sceneA)">open the folder</a>
-or
-<a href="#" onclick="showScene(sceneB)">ignore it and continue coding</a>?
+Will you follow the path of the player or the creator?
 </p>
 
+<button onclick="showStory('creator')">Become a Creator</button>
+<button onclick="showStory('player')">Stay a Player</button>
+
 </div>
+
+<div id="chapter"></div>
+
+<div id="gameLink" style="display:none;">
+    <h2>Mini Game Unlocked!</h2>
+    <p>
+        Your journey has inspired you to test your knowledge.
+        Click below to start the quiz.
+    </p>
+
+    <button onclick="startGame()">Play Mini Game</button>
+</div>
+
+<div id="gameArea">
+
+    <h2 id="question"></h2>
+
+    <button class="choice" onclick="checkAnswer(0)"></button>
+    <button class="choice" onclick="checkAnswer(1)"></button>
+    <button class="choice" onclick="checkAnswer(2)"></button>
+    <button class="choice" onclick="checkAnswer(3)"></button>
+
+</div>
+
+<div id="score"></div>
 
 </div>
 
 <script>
 
-const sceneA = `
-<p>
-The folder opens and reveals a magical game engine.
-A message appears:
-<i>"Every choice creates a new reality."</i>
-</p>
+function showStory(path){
 
-<p>
-Do you
-<a href="#" onclick="showScene(sceneC)">create a horror game</a>
-or
-<a href="#" onclick="showScene(sceneD)">create an adventure game</a>?
-</p>
-`;
+    let chapter = document.getElementById("chapter");
 
-const sceneB = `
-<p>
-You continue coding through the night.
-Your project becomes stable and polished.
-Players love it, but you always wonder what was inside the mysterious folder.
-</p>
+    if(path === "creator"){
+        chapter.innerHTML = `
+        <p>
+        You decide to become a creator. Instead of simply playing games,
+        you begin designing levels, writing stories, and imagining monsters,
+        heroes, and mysterious worlds.
+        </p>
 
-<p>
-<b>Ending: The Practical Developer</b>
-</p>
-
-<p>
-<a href="#" onclick="location.reload()">Play Again</a>
-</p>
-`;
-
-const sceneC = `
-<p>
-You build a terrifying horror game.
-Streamers scream. Players post theories.
-The game becomes a cult classic.
-</p>
-
-<p>
-<b>Ending: Master of Horror</b>
-</p>
-
-<p>
-<a href="#" onclick="location.reload()">Play Again</a>
-</p>
-`;
-
-const sceneD = `
-<p>
-You create a colorful adventure game filled with puzzles and secrets.
-Thousands of players explore your world.
-A hidden portal appears...
-</p>
-
-<p>
-<a href="#" onclick="showScene(miniGame)">Enter the Portal Mini Game</a>
-</p>
-`;
-
-const miniGame = `
-<h2>Mini Game: Guess the Number</h2>
-
-<p>
-I'm thinking of a number between 1 and 5.
-Type your guess below.
-</p>
-
-<input id="guess" type="number" min="1" max="5">
-<button onclick="checkGuess()">Guess</button>
-
-<p id="result"></p>
-
-<p>
-<a href="#" onclick="location.reload()">Restart Story</a>
-</p>
-`;
-
-function checkGuess(){
-    let number = Math.floor(Math.random()*5)+1;
-    let guess = document.getElementById("guess").value;
-
-    if(guess == number){
-        document.getElementById("result").innerHTML =
-        "<b>You Win!</b> The portal reveals a legendary game idea.";
+        <p>
+        Every challenge teaches you something new:
+        programming, art, sound, and storytelling.
+        Your dream is no longer playing games—
+        it is creating experiences for others.
+        </p>
+        `;
     }
     else{
-        document.getElementById("result").innerHTML =
-        "<b>Wrong!</b> The number was " + number + ". Try again.";
+        chapter.innerHTML = `
+        <p>
+        You continue playing games and discover something surprising.
+        Every game makes you wonder:
+        "How was this built?"
+        </p>
+
+        <p>
+        Eventually curiosity wins. You begin learning game design,
+        turning your love of games into a passion for creating them.
+        </p>
+        `;
     }
+
+    document.getElementById("gameLink").style.display = "block";
+}
+
+const questions = [
+
+{
+q:"What is your favorite part of game development?",
+a:["Creating worlds and gameplay","Doing taxes","Writing grocery lists","Washing dishes"],
+correct:0
+},
+
+{
+q:"Why do you create games?",
+a:["To share experiences with players","To count ceiling tiles","To avoid computers","To delete creativity"],
+correct:0
+},
+
+{
+q:"What skill helps a game developer most?",
+a:["Curiosity and learning","Ignoring feedback","Giving up quickly","Never testing"],
+correct:0
+},
+
+{
+q:"What makes an indie game special?",
+a:["Creative ideas and passion","The largest budget","Having no gameplay","Being unfinished"],
+correct:0
+},
+
+{
+q:"What is the reward of creating games?",
+a:["Seeing players enjoy your work","Nothing at all","More homework","Collecting dust"],
+correct:0
+}
+
+];
+
+let currentQuestion = 0;
+let score = 0;
+
+function startGame(){
+
+    document.getElementById("gameArea").style.display = "block";
+    document.getElementById("gameLink").style.display = "none";
+
+    loadQuestion();
+}
+
+function loadQuestion(){
+
+    if(currentQuestion >= questions.length){
+        endGame();
+        return;
+    }
+
+    document.getElementById("question").innerText =
+        questions[currentQuestion].q;
+
+    let buttons = document.querySelectorAll(".choice");
+
+    for(let i=0;i<buttons.length;i++){
+        buttons[i].innerText = questions[currentQuestion].a[i];
+    }
+}
+
+function checkAnswer(choice){
+
+    if(choice === questions[currentQuestion].correct){
+        score++;
+    }
+
+    currentQuestion++;
+    loadQuestion();
+}
+
+function endGame(){
+
+    document.getElementById("gameArea").innerHTML = "";
+
+    let message = "";
+
+    if(score === 5){
+        message = "Master Game Creator!";
+    }
+    else if(score >= 3){
+        message = "Rising Indie Developer!";
+    }
+    else{
+        message = "Keep Learning and Creating!";
+    }
+
+    document.getElementById("score").innerHTML = `
+        <h2>Game Complete!</h2>
+        <p>Your Score: ${score}/${questions.length}</p>
+        <h3>${message}</h3>
+        <p>
+        Every great game starts with imagination.
+        Keep creating, experimenting, and building new worlds.
+        </p>
+    `;
 }
 
 </script>
