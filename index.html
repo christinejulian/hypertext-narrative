@@ -1,123 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A Gamer's Journey</title>
+<title>Game Developer's Journey</title>
 
 <style>
 body{
     font-family: "Times New Roman", serif;
-    font-size: 24px;
-    margin: 40px;
+    background: linear-gradient(cyan, forestgreen);
     color: white;
-    background-color: #111;
-    background-image: linear-gradient(midnightblue, black);
-    line-height: 1.8;
+    text-align: center;
+    padding: 40px;
+    font-size: 25px;
 }
 
-.section{
-    display:none;
-}
-
-.section:target{
-    display:block;
-}
-
-#start{
-    display:block;
+#game{
+    background: rgba(0,0,0,0.5);
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 900px;
+    margin: auto;
 }
 
 a{
-    color: gold;
-    text-decoration:none;
-    font-weight:bold;
+    color: yellow;
+    text-decoration: none;
+    font-weight: bold;
 }
 
 a:hover{
-    color: cyan;
+    color: orange;
+}
+
+h1{
+    text-shadow: 2px 2px 5px black;
 }
 </style>
+
+<script>
+function showScene(scene){
+    document.getElementById("story").innerHTML = scene;
+}
+</script>
+
 </head>
+
 <body>
 
-<div id="start" class="section">
-    <h1>A Gamer's Journey</h1>
+<div id="game">
 
-    <p>
-        Ever since I picked up a controller, games became more than entertainment.
-        They became worlds to explore, stories to discover, and challenges to conquer.
-        Every title opened a new path.
-    </p>
+<h1>The Game Developer's Journey</h1>
 
-    <p>
-        One evening, I found myself standing before three glowing portals.
-    </p>
+<div id="story">
 
-    <ul>
-        <li><a href="#horror">Enter the Horror Portal</a></li>
-        <li><a href="#adventure">Enter the Adventure Portal</a></li>
-        <li><a href="#creator">Become a Game Creator</a></li>
-    </ul>
+<p>
+You are Christine, a passionate game developer who dreams of creating unforgettable worlds.
+One evening, while working on a new project, you discover a mysterious folder labeled
+<b>"Ultimate Game."</b>
+</p>
+
+<p>
+Do you
+<a href="#" onclick="showScene(sceneA)">open the folder</a>
+or
+<a href="#" onclick="showScene(sceneB)">ignore it and continue coding</a>?
+</p>
+
 </div>
 
-<div id="horror" class="section">
-    <h2>The Horror Portal</h2>
-
-    <p>
-        Darkness surrounds you. Every hallway creaks.
-        You remember why horror games are exciting:
-        fear, suspense, and the thrill of surviving one more night.
-    </p>
-
-    <p>
-        A strange door appears.
-    </p>
-
-    <ul>
-        <li><a href="#start">Return to the Portals</a></li>
-        <li><a href="#creator">Design Your Own Horror Game</a></li>
-    </ul>
 </div>
 
-<div id="adventure" class="section">
-    <h2>The Adventure Portal</h2>
+<script>
 
-    <p>
-        Mountains rise in the distance.
-        Quests await. Hidden treasures sparkle beyond the horizon.
-        Every choice shapes your journey.
-    </p>
+const sceneA = `
+<p>
+The folder opens and reveals a magical game engine.
+A message appears:
+<i>"Every choice creates a new reality."</i>
+</p>
 
-    <ul>
-        <li><a href="#start">Return to the Portals</a></li>
-        <li><a href="#creator">Create Your Own Adventure</a></li>
-    </ul>
-</div>
+<p>
+Do you
+<a href="#" onclick="showScene(sceneC)">create a horror game</a>
+or
+<a href="#" onclick="showScene(sceneD)">create an adventure game</a>?
+</p>
+`;
 
-<div id="creator" class="section">
-    <h2>The Creator's Workshop</h2>
+const sceneB = `
+<p>
+You continue coding through the night.
+Your project becomes stable and polished.
+Players love it, but you always wonder what was inside the mysterious folder.
+</p>
 
-    <p>
-        You are no longer just a player.
-        You become a developer, building worlds, designing levels,
-        writing stories, and bringing ideas to life.
-    </p>
+<p>
+<b>Ending: The Practical Developer</b>
+</p>
 
-    <p>
-        On a nearby desk sits a glowing arcade cabinet.
-    </p>
+<p>
+<a href="#" onclick="location.reload()">Play Again</a>
+</p>
+`;
 
-    <p>
-        <a href="https://christine-890.itch.io/" target="_blank">
-            Play a Mini Game
-        </a>
-    </p>
+const sceneC = `
+<p>
+You build a terrifying horror game.
+Streamers scream. Players post theories.
+The game becomes a cult classic.
+</p>
 
-    <ul>
-        <li><a href="#start">Start Over</a></li>
-    </ul>
-</div>
+<p>
+<b>Ending: Master of Horror</b>
+</p>
+
+<p>
+<a href="#" onclick="location.reload()">Play Again</a>
+</p>
+`;
+
+const sceneD = `
+<p>
+You create a colorful adventure game filled with puzzles and secrets.
+Thousands of players explore your world.
+A hidden portal appears...
+</p>
+
+<p>
+<a href="#" onclick="showScene(miniGame)">Enter the Portal Mini Game</a>
+</p>
+`;
+
+const miniGame = `
+<h2>Mini Game: Guess the Number</h2>
+
+<p>
+I'm thinking of a number between 1 and 5.
+Type your guess below.
+</p>
+
+<input id="guess" type="number" min="1" max="5">
+<button onclick="checkGuess()">Guess</button>
+
+<p id="result"></p>
+
+<p>
+<a href="#" onclick="location.reload()">Restart Story</a>
+</p>
+`;
+
+function checkGuess(){
+    let number = Math.floor(Math.random()*5)+1;
+    let guess = document.getElementById("guess").value;
+
+    if(guess == number){
+        document.getElementById("result").innerHTML =
+        "<b>You Win!</b> The portal reveals a legendary game idea.";
+    }
+    else{
+        document.getElementById("result").innerHTML =
+        "<b>Wrong!</b> The number was " + number + ". Try again.";
+    }
+}
+
+</script>
 
 </body>
 </html>
