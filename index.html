@@ -3,288 +3,351 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Christine_890: A Game Developer's Journey</title>
+<title>Christine's Game Development Journey</title>
 
 <style>
 body{
-    font-family: "Times New Roman", serif;
-    background: linear-gradient(midnightblue, black);
-    color:white;
     margin:0;
-    padding:20px;
-    line-height:1.6;
-    font-size:22px;
+    padding:0;
+    font-family:"Times New Roman", serif;
+    background:linear-gradient(#0f172a,#1e293b,#334155);
+    color:white;
 }
 
-#container{
-    max-width:900px;
-    margin:auto;
-    background:rgba(0,0,0,.7);
-    padding:25px;
-    border-radius:10px;
+header{
+    text-align:center;
+    padding:40px;
+    background:black;
 }
 
 h1{
-    text-align:center;
+    font-size:50px;
+}
+
+.container{
+    max-width:1000px;
+    margin:auto;
+    padding:30px;
+}
+
+.section{
+    display:none;
+    background:rgba(255,255,255,0.08);
+    padding:25px;
+    border-radius:15px;
+    margin-top:20px;
+}
+
+.active{
+    display:block;
 }
 
 button{
-    display:block;
-    width:100%;
-    padding:15px;
-    margin:10px 0;
-    font-size:18px;
-    cursor:pointer;
+    padding:12px 25px;
+    margin:10px;
     border:none;
-    border-radius:5px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:18px;
 }
 
 button:hover{
-    background:#ddd;
+    transform:scale(1.05);
 }
 
-#score{
-    text-align:right;
-    font-size:20px;
-    margin-bottom:15px;
-}
-
-a{
+.link{
     color:gold;
+    cursor:pointer;
+    text-decoration:underline;
+}
+
+.quiz{
+    margin-top:20px;
+}
+
+.question{
+    margin-bottom:25px;
+}
+
+.score{
+    font-size:30px;
+    text-align:center;
+    margin-top:20px;
 }
 </style>
 </head>
+
 <body>
 
-<div id="container">
+<header>
+<h1>Christine's Hypertext Adventure</h1>
+<p>A Journey Through My Love of Creating Games</p>
+</header>
 
-<h1>Christine_890: The Path of a Game Creator</h1>
+<div class="container">
 
-<div id="score">Score: 0</div>
+<div id="home" class="section active">
 
-<div id="game">
+<h2>Welcome Traveler</h2>
 
 <p>
-Greetings, esteemed friends and fellow enthusiasts of the gaming realm!
-I am Christine_890, a passionate game developer who dreams of creating
-memorable experiences for players around the world.
+Greetings, esteemed friends and fellow enthusiasts of the gaming realm.
+My name is Christine, and this is the story of my journey through the
+world of game development.
 </p>
 
 <p>
-My journey begins with a simple question...
+Unlike a traditional story, this narrative allows you to travel through
+different chapters of my life as a creator. Every path reveals another
+piece of my passion for games, creativity, storytelling, and design.
 </p>
 
-<button onclick="question1()">Begin My Adventure</button>
+<p>
+From my earliest ideas to my dreams of becoming a renowned game
+developer, every experience has shaped who I am today.
+</p>
+
+<p>
+Choose a path below to continue exploring.
+</p>
+
+<button onclick="showSection('chapter1')">My Beginning</button>
+<button onclick="showSection('chapter2')">Why I Create Games</button>
+<button onclick="showSection('chapter3')">My Future Dreams</button>
+<button onclick="showSection('quizSection')">Play Mini Game</button>
 
 </div>
+
+<div id="chapter1" class="section">
+
+<h2>Chapter 1: My Beginning</h2>
+
+<p>
+I am Christine.
+</p>
+
+<p>
+My fascination with games began long before I ever touched a game engine.
+As a player, I explored countless digital worlds, each one filled with
+adventure, mystery, challenge, and imagination.
+</p>
+
+<p>
+Every game taught me something new.
+Some taught me how stories could move people emotionally.
+Others demonstrated how gameplay systems could create unforgettable
+moments.
+</p>
+
+<p>
+Eventually I asked myself a simple question:
+</p>
+
+<p>
+"What if I could build worlds of my own?"
+</p>
+
+<p>
+That question became the foundation of my journey.
+I began learning game development and experimenting with game design.
+At first every project felt impossible.
+There were bugs, errors, broken mechanics, and countless obstacles.
+</p>
+
+<p>
+Yet every challenge became an opportunity to improve.
+Each mistake taught me something valuable.
+Every finished feature felt like an achievement.
+</p>
+
+<p>
+Slowly, my ideas transformed into playable experiences.
+</p>
+
+<button onclick="showSection('chapter2')">Continue</button>
+<button onclick="showSection('home')">Home</button>
+
+</div>
+
+<div id="chapter2" class="section">
+
+<h2>Chapter 2: Why I Create Games</h2>
+
+<p>
+For me, game development is more than a hobby.
+It is a way to express creativity.
+</p>
+
+<p>
+When I design a game, I am building a world where players can experience
+stories, challenges, and emotions that cannot exist anywhere else.
+</p>
+
+<p>
+I enjoy experimenting with many genres.
+One day I might be creating a relaxing experience.
+The next day I might be designing a survival horror adventure filled with
+suspense and mystery.
+</p>
+
+<p>
+Unity and Unreal Engine provide the tools that allow me to transform
+ideas into reality.
+</p>
+
+<p>
+Every asset, every mechanic, every level and every story element serves
+a purpose.
+Together they become something larger than the individual pieces.
+They become a game.
+</p>
+
+<p>
+That transformation is what excites me the most.
+</p>
+
+<button onclick="showSection('chapter3')">Continue</button>
+<button onclick="showSection('home')">Home</button>
+
+</div>
+
+<div id="chapter3" class="section">
+
+<h2>Chapter 3: My Future Dreams</h2>
+
+<p>
+I dream of creating games that players remember for years.
+</p>
+
+<p>
+I want my projects to inspire curiosity, wonder, and imagination.
+I hope to continue learning, improving, and pushing the limits of my
+abilities as a developer.
+</p>
+
+<p>
+The future of games is filled with endless possibilities.
+New technologies emerge every year.
+New opportunities appear with every project.
+</p>
+
+<p>
+My goal is not simply to make games.
+My goal is to create experiences.
+</p>
+
+<p>
+Experiences that tell stories.
+Experiences that challenge players.
+Experiences that leave a lasting impression.
+</p>
+
+<p>
+As long as I continue creating, I know my journey is only beginning.
+</p>
+
+<button onclick="showSection('quizSection')">Play Mini Game</button>
+<button onclick="showSection('home')">Home</button>
+
+</div>
+
+<div id="quizSection" class="section">
+
+<h2>Mini Game: How Well Do You Know Christine?</h2>
+
+<div class="quiz">
+
+<div class="question">
+<p>1. What is Christine passionate about?</p>
+<label><input type="radio" name="q1" value="1"> Game Development</label><br>
+<label><input type="radio" name="q1" value="0"> Accounting</label><br>
+<label><input type="radio" name="q1" value="0"> Farming</label>
+</div>
+
+<div class="question">
+<p>2. Which engines does Christine use?</p>
+<label><input type="radio" name="q2" value="1"> Unity and Unreal Engine</label><br>
+<label><input type="radio" name="q2" value="0"> RPG Maker Only</label><br>
+<label><input type="radio" name="q2" value="0"> None</label>
+</div>
+
+<div class="question">
+<p>3. What genres does Christine enjoy creating?</p>
+<label><input type="radio" name="q3" value="1"> Many genres including survival experiences</label><br>
+<label><input type="radio" name="q3" value="0"> Only puzzle books</label><br>
+<label><input type="radio" name="q3" value="0"> No genres</label>
+</div>
+
+<div class="question">
+<p>4. What drives Christine to create games?</p>
+<label><input type="radio" name="q4" value="1"> Creativity and storytelling</label><br>
+<label><input type="radio" name="q4" value="0"> Boredom</label><br>
+<label><input type="radio" name="q4" value="0"> Luck</label>
+</div>
+
+<div class="question">
+<p>5. What is Christine's ultimate dream?</p>
+<label><input type="radio" name="q5" value="1"> Create memorable experiences for players</label><br>
+<label><input type="radio" name="q5" value="0"> Never make games again</label><br>
+<label><input type="radio" name="q5" value="0"> Become a race car driver</label>
+</div>
+
+<button onclick="calculateScore()">Submit Quiz</button>
+
+<div id="result" class="score"></div>
+
+</div>
+
+<button onclick="showSection('home')">Return Home</button>
+
+</div>
+
 </div>
 
 <script>
 
-let score = 0;
+function showSection(id){
 
-function updateScore(){
-    document.getElementById("score").innerHTML = "Score: " + score;
+let sections=document.querySelectorAll('.section');
+
+sections.forEach(function(section){
+section.classList.remove('active');
+});
+
+document.getElementById(id).classList.add('active');
+window.scrollTo(0,0);
+
 }
 
-function question1(){
-document.getElementById("game").innerHTML = `
-<h2>Chapter 1: My Inspiration</h2>
+function calculateScore(){
 
-<p>
-As a young creator, what inspired me the most?
-</p>
+let score=0;
 
-<button onclick="correct1()">Creating games and bringing ideas to life</button>
-<button onclick="wrong1()">Avoiding creativity</button>
-<button onclick="wrong1()">Ignoring imagination</button>
-`;
+for(let i=1;i<=5;i++){
+
+let answer=document.querySelector('input[name="q'+i+'"]:checked');
+
+if(answer){
+score+=parseInt(answer.value);
 }
 
-function correct1(){
-score++;
-updateScore();
-
-document.getElementById("game").innerHTML = `
-<h2>Correct!</h2>
-
-<p>
-Creating games has always been my passion. Every project starts as an
-idea waiting to become reality.
-</p>
-
-<button onclick="question2()">Continue</button>
-`;
 }
 
-function wrong1(){
-document.getElementById("game").innerHTML = `
-<h2>Not Quite</h2>
+let message="";
 
-<p>
-My true inspiration comes from creating games and exploring imagination.
-</p>
-
-<button onclick="question2()">Continue</button>
-`;
+if(score===5){
+message="Perfect Score! You understand Christine's passion for game development.";
 }
-
-function question2(){
-document.getElementById("game").innerHTML = `
-<h2>Chapter 2: Choosing My Tools</h2>
-
-<p>
-Which game engines do I frequently use?
-</p>
-
-<button onclick="correct2()">Unity and Unreal Engine</button>
-<button onclick="wrong2()">Spreadsheet Software</button>
-<button onclick="wrong2()">Word Processors</button>
-`;
-}
-
-function correct2(){
-score++;
-updateScore();
-
-document.getElementById("game").innerHTML = `
-<h2>Correct!</h2>
-
-<p>
-Unity and Unreal Engine help me transform concepts into playable worlds.
-</p>
-
-<button onclick="question3()">Continue</button>
-`;
-}
-
-function wrong2(){
-document.getElementById("game").innerHTML = `
-<h2>Not Quite</h2>
-
-<p>
-Unity and Unreal Engine are the tools that power many of my creations.
-</p>
-
-<button onclick="question3()">Continue</button>
-`;
-}
-
-function question3(){
-document.getElementById("game").innerHTML = `
-<h2>Chapter 3: My Favorite Challenge</h2>
-
-<p>
-What excites me most about game development?
-</p>
-
-<button onclick="correct3()">Designing gameplay, stories, and worlds</button>
-<button onclick="wrong3()">Doing nothing with ideas</button>
-<button onclick="wrong3()">Avoiding experimentation</button>
-`;
-}
-
-function correct3(){
-score++;
-updateScore();
-
-document.getElementById("game").innerHTML = `
-<h2>Correct!</h2>
-
-<p>
-I love building gameplay mechanics, stories, and immersive experiences
-that players can enjoy.
-</p>
-
-<button onclick="question4()">Continue</button>
-`;
-}
-
-function wrong3(){
-document.getElementById("game").innerHTML = `
-<h2>Not Quite</h2>
-
-<p>
-The joy of development comes from creating worlds players can explore.
-</p>
-
-<button onclick="question4()">Continue</button>
-`;
-}
-
-function question4(){
-document.getElementById("game").innerHTML = `
-<h2>Chapter 4: Looking Ahead</h2>
-
-<p>
-What is one of my biggest goals?
-</p>
-
-<button onclick="correct4()">Leave a lasting mark on the gaming industry</button>
-<button onclick="wrong4()">Stop creating games forever</button>
-<button onclick="wrong4()">Avoid innovation</button>
-`;
-}
-
-function correct4(){
-score++;
-updateScore();
-ending();
-}
-
-function wrong4(){
-ending();
-}
-
-function ending(){
-
-let message = "";
-
-if(score === 4){
-message = `
-<h2>Master Developer Ending</h2>
-
-<p>
-You understand my journey perfectly. My dream is to create meaningful,
-immersive experiences that inspire players and showcase the power of
-interactive storytelling.
-</p>
-`;
-}
-else if(score >= 2){
-message = `
-<h2>Creative Explorer Ending</h2>
-
-<p>
-You know much about my passion for game development. Every project is
-another step toward building worlds that players will remember.
-</p>
-`;
+else if(score>=3){
+message="Great Job! You know quite a bit about Christine's journey.";
 }
 else{
-message = `
-<h2>New Adventurer Ending</h2>
-
-<p>
-You have just begun learning about my journey. The path of game
-development is filled with creativity, challenges, and endless
-possibilities.
-</p>
-`;
+message="Keep exploring the narrative and try again.";
 }
 
-document.getElementById("game").innerHTML = `
-${message}
+document.getElementById("result").innerHTML=
+"Score: "+score+"/5<br><br>"+message;
 
-<p><strong>Final Score: ${score}/4</strong></p>
-
-<p>
-Thank you for exploring my story as Christine_890. Every game I create
-is another opportunity to turn imagination into reality.
-</p>
-
-<button onclick="location.reload()">Play Again</button>
-`;
 }
 
 </script>
