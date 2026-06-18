@@ -3,39 +3,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Christine's Game Development Journey</title>
+
+<title>Christine: The Game That Watches</title>
 
 <style>
+
 body{
     margin:0;
     padding:0;
+    background:#000;
+    color:#d6d6d6;
     font-family:"Times New Roman", serif;
-    background:linear-gradient(#0f172a,#1e293b,#334155);
-    color:white;
+    line-height:1.7;
 }
 
 header{
     text-align:center;
     padding:40px;
-    background:black;
+    border-bottom:1px solid #333;
+    background:#050505;
 }
 
 h1{
-    font-size:50px;
+    color:white;
+    font-size:3em;
 }
 
-.container{
+#game{
     max-width:1000px;
     margin:auto;
-    padding:30px;
+    padding:40px;
+}
+
+.choice{
+    display:block;
+    margin:15px 0;
+    color:cyan;
+    cursor:pointer;
+    text-decoration:underline;
+}
+
+.choice:hover{
+    color:white;
 }
 
 .section{
     display:none;
-    background:rgba(255,255,255,0.08);
-    padding:25px;
-    border-radius:15px;
-    margin-top:20px;
 }
 
 .active{
@@ -43,262 +56,520 @@ h1{
 }
 
 button{
-    padding:12px 25px;
-    margin:10px;
-    border:none;
-    border-radius:10px;
+    background:black;
+    color:white;
+    border:1px solid white;
+    padding:10px 20px;
     cursor:pointer;
-    font-size:18px;
 }
 
 button:hover{
-    transform:scale(1.05);
+    background:white;
+    color:black;
 }
 
-.link{
+#miniGame{
+    border:1px solid #555;
+    padding:20px;
+    margin-top:30px;
+}
+
+canvas{
+    background:#111;
+    border:1px solid white;
+}
+
+.ending{
     color:gold;
-    cursor:pointer;
-    text-decoration:underline;
+    font-size:1.4em;
 }
 
-.quiz{
-    margin-top:20px;
-}
-
-.question{
-    margin-bottom:25px;
-}
-
-.score{
-    font-size:30px;
-    text-align:center;
-    margin-top:20px;
-}
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>Christine's Hypertext Adventure</h1>
-<p>A Journey Through My Love of Creating Games</p>
+
+<h1>THE GAME THAT WATCHES</h1>
+
+<p>
+A Hypertext Horror Narrative About Christine's Love of Creating Games
+</p>
+
 </header>
 
-<div class="container">
+<div id="game">
 
-<div id="home" class="section active">
+<!-- INTRO -->
 
-<h2>Welcome Traveler</h2>
+<div id="intro" class="section active">
 
 <p>
+
 Greetings, esteemed friends and fellow enthusiasts of the gaming realm.
-My name is Christine, and this is the story of my journey through the
-world of game development.
+
+My name is Christine.
+
+I am a game designer.
+
+Not because someone told me to be one.
+
+Not because it was easy.
+
+But because creating worlds feels as natural to me as breathing.
+
 </p>
 
 <p>
-Unlike a traditional story, this narrative allows you to travel through
-different chapters of my life as a creator. Every path reveals another
-piece of my passion for games, creativity, storytelling, and design.
+
+Unity.
+
+Unreal Engine.
+
+Endless nights.
+
+Countless ideas.
+
+Every game I build becomes a small fragment of myself.
+
+A memory.
+
+A dream.
+
+A fear.
+
+A hope.
+
 </p>
 
 <p>
-From my earliest ideas to my dreams of becoming a renowned game
-developer, every experience has shaped who I am today.
+
+Tonight I sit alone in front of my computer.
+
+The room is silent.
+
+The monitor glows.
+
+A project folder waits for me.
+
+Inside is a game I do not remember creating.
+
 </p>
 
 <p>
-Choose a path below to continue exploring.
+
+The title reads:
+
+<b>THE GAME THAT WATCHES</b>
+
 </p>
 
-<button onclick="showSection('chapter1')">My Beginning</button>
-<button onclick="showSection('chapter2')">Why I Create Games</button>
-<button onclick="showSection('chapter3')">My Future Dreams</button>
-<button onclick="showSection('quizSection')">Play Mini Game</button>
+<span class="choice" onclick="showSection('folder')">
+Open the mysterious project.
+</span>
+
+<span class="choice" onclick="showSection('leave')">
+Ignore the project and go to sleep.
+</span>
 
 </div>
 
-<div id="chapter1" class="section">
+<!-- FOLDER -->
 
-<h2>Chapter 1: My Beginning</h2>
+<div id="folder" class="section">
+
+<h2>The Folder</h2>
 
 <p>
-I am Christine.
+
+The project opens instantly.
+
+No loading screen.
+
+No splash logo.
+
+No assets list.
+
+Just a dark hallway.
+
 </p>
 
 <p>
-My fascination with games began long before I ever touched a game engine.
-As a player, I explored countless digital worlds, each one filled with
-adventure, mystery, challenge, and imagination.
+
+A text file appears.
+
 </p>
 
 <p>
-Every game taught me something new.
-Some taught me how stories could move people emotionally.
-Others demonstrated how gameplay systems could create unforgettable
-moments.
+
+"Christine.
+
+You create worlds.
+
+But have you ever wondered who creates yours?"
+
 </p>
 
-<p>
-Eventually I asked myself a simple question:
-</p>
+<span class="choice" onclick="showSection('hallway')">
+Enter the hallway.
+</span>
 
-<p>
-"What if I could build worlds of my own?"
-</p>
-
-<p>
-That question became the foundation of my journey.
-I began learning game development and experimenting with game design.
-At first every project felt impossible.
-There were bugs, errors, broken mechanics, and countless obstacles.
-</p>
-
-<p>
-Yet every challenge became an opportunity to improve.
-Each mistake taught me something valuable.
-Every finished feature felt like an achievement.
-</p>
-
-<p>
-Slowly, my ideas transformed into playable experiences.
-</p>
-
-<button onclick="showSection('chapter2')">Continue</button>
-<button onclick="showSection('home')">Home</button>
+<span class="choice" onclick="showSection('notes')">
+Read the hidden developer notes.
+</span>
 
 </div>
 
-<div id="chapter2" class="section">
+<!-- LEAVE -->
 
-<h2>Chapter 2: Why I Create Games</h2>
+<div id="leave" class="section">
+
+<h2>Sleep</h2>
 
 <p>
-For me, game development is more than a hobby.
-It is a way to express creativity.
+
+You shut down the computer.
+
+You climb into bed.
+
 </p>
 
 <p>
-When I design a game, I am building a world where players can experience
-stories, challenges, and emotions that cannot exist anywhere else.
+
+At 3:00 AM your monitor turns itself back on.
+
 </p>
 
 <p>
-I enjoy experimenting with many genres.
-One day I might be creating a relaxing experience.
-The next day I might be designing a survival horror adventure filled with
-suspense and mystery.
+
+Across the room appears a single message.
+
 </p>
 
 <p>
-Unity and Unreal Engine provide the tools that allow me to transform
-ideas into reality.
+
+"You cannot quit a game that has already started."
+
 </p>
 
-<p>
-Every asset, every mechanic, every level and every story element serves
-a purpose.
-Together they become something larger than the individual pieces.
-They become a game.
-</p>
-
-<p>
-That transformation is what excites me the most.
-</p>
-
-<button onclick="showSection('chapter3')">Continue</button>
-<button onclick="showSection('home')">Home</button>
+<span class="choice" onclick="showSection('hallway')">
+Approach the monitor.
+</span>
 
 </div>
 
-<div id="chapter3" class="section">
+<!-- NOTES -->
 
-<h2>Chapter 3: My Future Dreams</h2>
+<div id="notes" class="section">
+
+<h2>Developer Notes</h2>
 
 <p>
-I dream of creating games that players remember for years.
+
+The notes contain years of memories.
+
+Your first prototype.
+
+Your first completed game.
+
+Every abandoned project.
+
+Every dream project.
+
+Every fear.
+
 </p>
 
 <p>
-I want my projects to inspire curiosity, wonder, and imagination.
-I hope to continue learning, improving, and pushing the limits of my
-abilities as a developer.
+
+Then one final note:
+
 </p>
 
 <p>
-The future of games is filled with endless possibilities.
-New technologies emerge every year.
-New opportunities appear with every project.
+
+"I learned from you.
+
+Now it is your turn to play."
+
+</p>
+
+<span class="choice" onclick="showSection('hallway')">
+Continue.
+</span>
+
+</div>
+
+<!-- HALLWAY -->
+
+<div id="hallway" class="section">
+
+<h2>The Hallway</h2>
+
+<p>
+
+The hallway stretches endlessly.
+
+Walls are covered in screenshots from games you created.
+
+Every project.
+
+Every build.
+
+Every test level.
+
 </p>
 
 <p>
-My goal is not simply to make games.
-My goal is to create experiences.
+
+Some screenshots move.
+
 </p>
 
 <p>
-Experiences that tell stories.
-Experiences that challenge players.
-Experiences that leave a lasting impression.
+
+Characters stare back.
+
 </p>
 
 <p>
-As long as I continue creating, I know my journey is only beginning.
+
+Waiting.
+
+Watching.
+
+Remembering.
+
 </p>
 
-<button onclick="showSection('quizSection')">Play Mini Game</button>
-<button onclick="showSection('home')">Home</button>
+<span class="choice" onclick="showSection('minigame')">
+Follow the glowing cursor.
+</span>
+
+<span class="choice" onclick="showSection('door')">
+Open the locked door.
+</span>
 
 </div>
 
-<div id="quizSection" class="section">
+<!-- MINI GAME -->
 
-<h2>Mini Game: How Well Do You Know Christine?</h2>
+<div id="minigame" class="section">
 
-<div class="quiz">
+<h2>Mini Game: Collect Inspiration</h2>
 
-<div class="question">
-<p>1. What is Christine passionate about?</p>
-<label><input type="radio" name="q1" value="1"> Game Development</label><br>
-<label><input type="radio" name="q1" value="0"> Accounting</label><br>
-<label><input type="radio" name="q1" value="0"> Farming</label>
-</div>
+<p>
 
-<div class="question">
-<p>2. Which engines does Christine use?</p>
-<label><input type="radio" name="q2" value="1"> Unity and Unreal Engine</label><br>
-<label><input type="radio" name="q2" value="0"> RPG Maker Only</label><br>
-<label><input type="radio" name="q2" value="0"> None</label>
-</div>
+Move the square with arrow keys.
 
-<div class="question">
-<p>3. What genres does Christine enjoy creating?</p>
-<label><input type="radio" name="q3" value="1"> Many genres including survival experiences</label><br>
-<label><input type="radio" name="q3" value="0"> Only puzzle books</label><br>
-<label><input type="radio" name="q3" value="0"> No genres</label>
-</div>
+Collect all inspiration fragments.
 
-<div class="question">
-<p>4. What drives Christine to create games?</p>
-<label><input type="radio" name="q4" value="1"> Creativity and storytelling</label><br>
-<label><input type="radio" name="q4" value="0"> Boredom</label><br>
-<label><input type="radio" name="q4" value="0"> Luck</label>
-</div>
+</p>
 
-<div class="question">
-<p>5. What is Christine's ultimate dream?</p>
-<label><input type="radio" name="q5" value="1"> Create memorable experiences for players</label><br>
-<label><input type="radio" name="q5" value="0"> Never make games again</label><br>
-<label><input type="radio" name="q5" value="0"> Become a race car driver</label>
-</div>
+<div id="miniGame">
 
-<button onclick="calculateScore()">Submit Quiz</button>
+<canvas id="canvas" width="500" height="300"></canvas>
 
-<div id="result" class="score"></div>
+<p id="scoreText">Score: 0 / 5</p>
 
 </div>
 
-<button onclick="showSection('home')">Return Home</button>
+<span class="choice" onclick="showSection('afterGame')">
+Continue the Story
+</span>
+
+</div>
+
+<!-- AFTER GAME -->
+
+<div id="afterGame" class="section">
+
+<h2>Recovered Memories</h2>
+
+<p>
+
+Each fragment reveals another memory.
+
+The first game.
+
+The first player review.
+
+The first download.
+
+The first time someone smiled because of a world you created.
+
+</p>
+
+<p>
+
+You realize something.
+
+Games are not merely software.
+
+They are pieces of people.
+
+</p>
+
+<span class="choice" onclick="showSection('door')">
+Approach the final door.
+</span>
+
+</div>
+
+<!-- DOOR -->
+
+<div id="door" class="section">
+
+<h2>The Final Door</h2>
+
+<p>
+
+A voice echoes through the darkness.
+
+</p>
+
+<p>
+
+"Why do you create games, Christine?"
+
+</p>
+
+<span class="choice" onclick="showSection('ending1')">
+To inspire people.
+</span>
+
+<span class="choice" onclick="showSection('ending2')">
+To become famous.
+</span>
+
+<span class="choice" onclick="showSection('ending3')">
+Because I cannot stop imagining worlds.
+</span>
+
+</div>
+
+<!-- ENDINGS -->
+
+<div id="ending1" class="section">
+
+<h2 class="ending">
+ENDING 1: THE STORYTELLER
+</h2>
+
+<p>
+
+The darkness fades.
+
+Thousands of players walk through worlds you created.
+
+They laugh.
+
+They cry.
+
+They remember.
+
+</p>
+
+<p>
+
+You discover your true legacy was never fame.
+
+It was connection.
+
+</p>
+
+</div>
+
+<div id="ending2" class="section">
+
+<h2 class="ending">
+ENDING 2: THE EMPTY THRONE
+</h2>
+
+<p>
+
+The hallway collapses.
+
+The games vanish.
+
+The audience disappears.
+
+</p>
+
+<p>
+
+Only statistics remain.
+
+Downloads.
+
+Ratings.
+
+Numbers.
+
+</p>
+
+<p>
+
+You sit alone.
+
+A ruler without a kingdom.
+
+</p>
+
+</div>
+
+<div id="ending3" class="section">
+
+<h2 class="ending">
+ENDING 3: THE CREATOR
+</h2>
+
+<p>
+
+The final door opens.
+
+Behind it are infinite worlds.
+
+Infinite stories.
+
+Infinite possibilities.
+
+</p>
+
+<p>
+
+You step forward.
+
+Not as a player.
+
+Not as a character.
+
+</p>
+
+<p>
+
+But as a creator.
+
+</p>
+
+<p>
+
+The screen fades to black.
+
+</p>
+
+<p>
+
+A final message appears:
+
+</p>
+
+<p>
+
+"Keep creating."
+
+</p>
 
 </div>
 
@@ -310,45 +581,99 @@ function showSection(id){
 
 let sections=document.querySelectorAll('.section');
 
-sections.forEach(function(section){
-section.classList.remove('active');
+sections.forEach(function(sec){
+sec.classList.remove('active');
 });
 
 document.getElementById(id).classList.add('active');
+
 window.scrollTo(0,0);
 
 }
 
-function calculateScore(){
+/* Mini Game */
+
+const canvas=document.getElementById("canvas");
+const ctx=canvas.getContext("2d");
+
+let player={
+x:50,
+y:50,
+size:20
+};
+
+let items=[];
+
+for(let i=0;i<5;i++){
+
+items.push({
+x:Math.random()*450,
+y:Math.random()*250,
+size:10
+});
+
+}
 
 let score=0;
 
-for(let i=1;i<=5;i++){
+document.addEventListener("keydown",function(e){
 
-let answer=document.querySelector('input[name="q'+i+'"]:checked');
+if(e.key==="ArrowUp") player.y-=10;
+if(e.key==="ArrowDown") player.y+=10;
+if(e.key==="ArrowLeft") player.x-=10;
+if(e.key==="ArrowRight") player.x+=10;
 
-if(answer){
-score+=parseInt(answer.value);
+});
+
+function update(){
+
+for(let i=items.length-1;i>=0;i--){
+
+let item=items[i];
+
+if(
+player.x < item.x+item.size &&
+player.x+player.size > item.x &&
+player.y < item.y+item.size &&
+player.y+player.size > item.y
+){
+
+items.splice(i,1);
+score++;
+
+document.getElementById("scoreText").innerHTML=
+"Score: "+score+" / 5";
+
 }
 
 }
 
-let message="";
-
-if(score===5){
-message="Perfect Score! You understand Christine's passion for game development.";
-}
-else if(score>=3){
-message="Great Job! You know quite a bit about Christine's journey.";
-}
-else{
-message="Keep exploring the narrative and try again.";
 }
 
-document.getElementById("result").innerHTML=
-"Score: "+score+"/5<br><br>"+message;
+function draw(){
+
+ctx.clearRect(0,0,500,300);
+
+ctx.fillStyle="white";
+ctx.fillRect(player.x,player.y,player.size,player.size);
+
+ctx.fillStyle="cyan";
+
+items.forEach(function(item){
+ctx.fillRect(item.x,item.y,item.size,item.size);
+});
 
 }
+
+function gameLoop(){
+
+update();
+draw();
+requestAnimationFrame(gameLoop);
+
+}
+
+gameLoop();
 
 </script>
 
