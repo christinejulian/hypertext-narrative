@@ -1,539 +1,770 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Christine: The Endless Journey of Game Creation</title>
+  <meta charset="UTF-8" />
+  <title>Christine’s Hypertext Journey of Game Creation</title>
+  <style>
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background: #05060a;
+      color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      line-height: 1.6;
+    }
 
-<style>
-body{
-    background:linear-gradient(to bottom,#101820,#1d2b53,#0f3460);
-    color:white;
-    font-family:"Times New Roman",serif;
-    margin:0;
-    padding:20px;
-    line-height:1.8;
-}
+    header, footer {
+      background: #11131b;
+      padding: 1rem 2rem;
+      border-bottom: 1px solid #333;
+    }
 
-.container{
-    max-width:1000px;
-    margin:auto;
-}
+    footer {
+      border-top: 1px solid #333;
+      border-bottom: none;
+      margin-top: 3rem;
+      font-size: 0.85rem;
+      text-align: center;
+    }
 
-.page{
-    display:none;
-    animation:fade .5s;
-}
+    main {
+      padding: 1.5rem 2rem 3rem 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
 
-.page:target{
-    display:block;
-}
+    h1, h2, h3 {
+      font-family: "Trebuchet MS", Arial, sans-serif;
+      color: #ffdd88;
+    }
 
-#start{
-    display:block;
-}
+    a {
+      color: #88c6ff;
+      text-decoration: none;
+      border-bottom: 1px dashed #88c6ff;
+    }
 
-h1,h2{
-    text-align:center;
-}
+    a:hover {
+      color: #ffffff;
+      border-bottom-style: solid;
+    }
 
-a{
-    color:gold;
-    text-decoration:none;
-    font-weight:bold;
-}
+    .page {
+      display: none;
+    }
 
-a:hover{
-    text-decoration:underline;
-}
+    .page.active {
+      display: block;
+    }
 
-.choice{
-    display:block;
-    margin:15px 0;
-    padding:10px;
-    border:1px solid gold;
-    background:rgba(255,255,255,.05);
-}
+    .choice-list {
+      margin-top: 1.5rem;
+      padding-left: 1.2rem;
+    }
 
-.gameBox{
-    text-align:center;
-}
+    .choice-list li {
+      margin-bottom: 0.6rem;
+    }
 
-canvas{
-    background:black;
-    border:2px solid gold;
-}
+    .meta-note {
+      font-size: 0.9rem;
+      color: #bbbbbb;
+      margin-top: 1rem;
+      border-left: 3px solid #444;
+      padding-left: 0.75rem;
+    }
 
-button{
-    padding:10px 20px;
-    font-size:18px;
-    cursor:pointer;
-}
-@keyframes fade{
-    from{opacity:0;}
-    to{opacity:1;}
-}
-</style>
+    .game-container {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      border: 1px solid #444;
+      background: #11131b;
+    }
+
+    .game-log {
+      margin-top: 0.75rem;
+      padding: 0.5rem;
+      background: #05060a;
+      border: 1px solid #333;
+      max-height: 200px;
+      overflow-y: auto;
+      font-size: 0.9rem;
+    }
+
+    .button-row {
+      margin-top: 0.75rem;
+    }
+
+    button {
+      background: #22263a;
+      color: #f4f4f4;
+      border: 1px solid #555;
+      padding: 0.4rem 0.8rem;
+      margin-right: 0.4rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    button:hover {
+      background: #2f3550;
+    }
+
+    input[type="number"] {
+      background: #05060a;
+      border: 1px solid #555;
+      color: #f4f4f4;
+      padding: 0.3rem;
+      width: 80px;
+    }
+
+    .ending {
+      border-top: 1px solid #444;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      font-style: italic;
+      color: #e6e6e6;
+    }
+
+    .label {
+      font-weight: bold;
+      color: #ffdd88;
+    }
+
+    .nav-top {
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .nav-top a {
+      margin-right: 0.75rem;
+    }
+  </style>
 </head>
-
 <body>
-
-<div class="container">
-
-<div class="page" id="start">
-
-<h1>Christine: The Endless Journey of Game Creation</h1>
-
-<p>
-Greetings, esteemed friends and fellow enthusiasts of the gaming realm.
-My name is Christine. I am a game designer, a storyteller, a dreamer,
-and above all, a creator.
-</p>
-
-<p>
-When I was younger, I played games simply for fun.
-I wandered through fantasy kingdoms, explored mysterious ruins,
-survived impossible odds, and watched digital worlds unfold before me.
-But eventually a question began to follow me everywhere:
-</p>
-
-<p>
-<b>"What if I could create worlds of my own?"</b>
-</p>
-
-<p>
-That question changed everything.
-</p>
-
-<p>
-Now I stand at the beginning of another journey.
-The path ahead is uncertain.
-Every choice I make may shape my future.
-</p>
-
-<a class="choice" href="#chapter1">
-Open Unity and begin a new project.
-</a>
-
-<a class="choice" href="#chapter2">
-Open Unreal Engine and pursue cinematic storytelling.
-</a>
-
-<a class="choice" href="#chapter3">
-Spend time playing games for inspiration first.
-</a>
-
-</div>
-
-<div class="page" id="chapter1">
-
-<h2>Chapter 1: The Unity Project</h2>
-
-<p>
-I launch Unity and stare at an empty scene.
-There is nothing here yet.
-No characters.
-No enemies.
-No stories.
-Only possibility.
-</p>
-
-<p>
-Every great game begins this way.
-A blank space waiting to become something meaningful.
-</p>
-
-<p>
-As I begin prototyping mechanics, I wonder what type of experience
-I should create.
-</p>
-
-<a class="choice" href="#horror">
-Create a psychological horror game.
-</a>
-
-<a class="choice" href="#survival">
-Create a survival experience.
-</a>
-
-<a class="choice" href="#minigame">
-Test a small idea first.
-</a>
-
-</div>
-
-<div class="page" id="chapter2">
-
-<h2>Chapter 2: The Unreal Vision</h2>
-
-<p>
-I open Unreal Engine.
-The viewport stretches before me like an unexplored universe.
-</p>
-
-<p>
-The lighting is beautiful.
-The atmosphere feels alive.
-I imagine players stepping into a world where every hallway,
-every shadow, and every sound tells a story.
-</p>
-
-<p>
-What should become the focus?
-</p>
-
-<a class="choice" href="#storyending">
-Create a narrative masterpiece.
-</a>
-
-<a class="choice" href="#innovation">
-Push technology beyond expectations.
-</a>
-
-</div>
-
-<div class="page" id="chapter3">
-
-<h2>Chapter 3: Seeking Inspiration</h2>
-
-<p>
-Before creating anything, I spend time playing games.
-Each title teaches me something.
-</p>
-
-<p>
-One game demonstrates incredible level design.
-Another reveals emotional storytelling.
-A third shows how simple mechanics can create unforgettable moments.
-</p>
-
-<p>
-The more I learn, the more I realize that every developer contributes
-something unique to the art form.
-</p>
-
-<a class="choice" href="#wisdom">
-Apply everything I have learned.
-</a>
-
-</div>
-
-<div class="page" id="horror">
-
-<h2>The Horror Path</h2>
-
-<p>
-Dark corridors.
-Uncertain footsteps.
-A feeling that something is always watching.
-</p>
-
-<p>
-I begin crafting a psychological horror experience.
-Not merely jump scares, but atmosphere.
-Tension.
-Emotion.
-Mystery.
-</p>
-
-<p>
-Months pass.
-The project grows larger than expected.
-</p>
-
-<a class="choice" href="#endingA">
-Release the game independently.
-</a>
-
-<a class="choice" href="#endingB">
-Keep improving it for years.
-</a>
-
-</div>
-
-<div class="page" id="survival">
-
-<h2>The Survival Path</h2>
-
-<p>
-I design systems for hunger, resources, exploration,
-and player choice.
-</p>
-
-<p>
-The challenge is balancing difficulty with fun.
-Every adjustment changes the experience.
-</p>
-
-<p>
-Eventually I face an important decision.
-</p>
-
-<a class="choice" href="#endingC">
-Focus on realism.
-</a>
-
-<a class="choice" href="#endingD">
-Focus on accessibility.
-</a>
-
-</div>
-
-<div class="page" id="minigame">
-
-<h2>Mini Game: Idea Catcher</h2>
-
-<p>
-Move your mouse across the canvas and collect as many ideas as possible.
-Every idea represents inspiration for a future game.
-Reach 15 points to win.
-</p>
-
-<div class="gameBox">
-
-<canvas id="game" width="600" height="350"></canvas>
-
-<p>
-Score:
-<span id="score">0</span>
-</p>
-
-<p id="message"></p>
-
-</div>
-
-<a class="choice" href="#chapter1">
-Return to the story.
-</a>
-
-</div>
-
-<div class="page" id="storyending">
-
-<h2>Ending: The Storyteller</h2>
-
-<p>
-I devote myself to narrative design.
-Years later, players remember my characters,
-my worlds, and the emotions they experienced.
-</p>
-
-<p>
-My games become proof that interactive storytelling
-can move people as deeply as any novel or film.
-</p>
-
-<h3>Ending Achieved: The Storyteller</h3>
-
-<a class="choice" href="#start">Begin Again</a>
-
-</div>
-
-<div class="page" id="innovation">
-
-<h2>Ending: The Innovator</h2>
-
-<p>
-I focus on experimentation.
-New systems.
-New technologies.
-New ways to interact with virtual worlds.
-</p>
-
-<p>
-Some ideas fail.
-Others redefine what players expect.
-</p>
-
-<p>
-Innovation becomes my legacy.
-</p>
-
-<h3>Ending Achieved: The Innovator</h3>
-
-<a class="choice" href="#start">Begin Again</a>
-
-</div>
-
-<div class="page" id="wisdom">
-
-<h2>Ending: The Student of Games</h2>
-
-<p>
-I realize that every game I play teaches a lesson.
-Every success and failure becomes part of my growth.
-</p>
-
-<p>
-Rather than chasing trends,
-I learn from the entire history of gaming.
-</p>
-
-<p>
-That knowledge shapes everything I create.
-</p>
-
-<h3>Ending Achieved: The Student of Games</h3>
-
-<a class="choice" href="#start">Begin Again</a>
-
-</div>
-
-<div class="page" id="endingA">
-
-<h2>Ending: The Independent Creator</h2>
-
-<p>
-I release my game.
-It reaches players around the world.
-</p>
-
-<p>
-Some praise it.
-Some critique it.
-But all of them experience something I created.
-</p>
-
-<p>
-A dream becomes reality.
-</p>
-
-<h3>Ending Achieved: Independent Creator</h3>
-
-<a class="choice" href="#start">Begin Again</a>
-
-</div>
-
-<div class="page" id="endingB">
-
-<h2>Ending: The Perfectionist</h2>
-
-<p>
-I continue refining my project.
-Every mechanic improves.
-Every visual evolves.
-</p>
-
-<p>
-The game becomes a masterpiece,
-but the journey teaches me an important truth:
-no game is ever truly finished.
-</p>
-
-<h3>Ending Achieved: The Perfectionist</h3>
-
-<a class="choice" href="#start">Begin Again</a>
-
-</div>
-
-<div class="page" id="endingC">
-
-<h2>Ending: The Survival Architect</h2>
-
-<p>
-Players praise the realism.
-Every decision matters.
-Every resource feels valuable.
-</p>
-
-<p>
-The experience becomes a benchmark for survival design.
-</p>
-
-<h3>Ending Achieved: Survival Architect</h3>
-
-<a class="choice" href="#start">Begin Again</a>
-
-</div>
-
-<div class="page" id="endingD">
-
-<h2>Ending: The People's Developer</h2>
-
-<p>
-You prioritize accessibility and player enjoyment.
-More people experience your game than you ever imagined.
-</p>
-
-<p>
-Your philosophy becomes simple:
-games are for everyone.
-</p>
-
-<h3>Ending Achieved: People's Developer</h3>
-
-<a class="choice" href="#start">Begin Again</a>
-
-</div>
-
-</div>
+<header>
+  <h1>Christine’s Hypertext Journey of Game Creation</h1>
+  <div class="nav-top">
+    <a href="#page1" data-page="page1">Start</a>
+    <a href="#pageMiniGame" data-page="pageMiniGame">Mini Game</a>
+    <a href="#page10" data-page="page10">Endings Hub</a>
+  </div>
+</header>
+
+<main>
+  <!-- PAGE 1 -->
+  <section id="page1" class="page active">
+    <h2>Page 1: A Greeting to the Realm</h2>
+    <p>
+      Greetings, esteemed friends and fellow enthusiasts of the gaming realm. I am Christine, a passionate and driven
+      game designer, relentlessly pursuing my dreams within the vast and dynamic world of game development.
+    </p>
+    <p>
+      With the powerful tools of Unity and Unreal Engine at my fingertips, I embark on an exhilarating journey of
+      creativity and innovation. From the tranquil realms of casual games to the heart-pounding challenges of survival
+      experiences, I traverse the spectrum of game genres with unwavering enthusiasm and boundless imagination.
+    </p>
+    <p>
+      For me, game development is not just a profession—it is a lifelong calling, a canvas upon which I paint my dreams
+      and aspirations. With each project I undertake, I immerse myself in a whirlwind of ideas, concepts, and designs,
+      weaving together intricate gameplay mechanics, captivating narratives, and carefully crafted worlds.
+    </p>
+    <p>
+      Tonight, I sit before my screen, the glow of the monitor reflecting the quiet fire in my eyes. I am about to
+      begin a new project, one that is not just a game, but a reflection of my love for creating games themselves.
+      This hypertext narrative is my inner monologue, my branching path of choices, my own playable diary.
+    </p>
+
+    <ul class="choice-list">
+      <li>
+        <a href="#page2" data-page="page2">
+          Step into the memory of how it all began.
+        </a>
+      </li>
+      <li>
+        <a href="#page3" data-page="page3">
+          Jump straight into the present, where deadlines and dreams collide.
+        </a>
+      </li>
+      <li>
+        <a href="#pageMiniGame" data-page="pageMiniGame">
+          Warm up with a small prototype: my mini game.
+        </a>
+      </li>
+    </ul>
+
+    <p class="meta-note">
+      This is a story about my love of creating games, told in the first person. Every link is a design decision,
+      every page a new build of my inner world.
+    </p>
+  </section>
+
+  <!-- PAGE 2 -->
+  <section id="page2" class="page">
+    <h2>Page 2: The First Spark</h2>
+    <p>
+      I remember the first time I realized that games were more than just distractions. I was younger, sitting on the
+      floor with a controller in my hands, feeling the strange sensation that the world on the screen was listening to
+      me. When I pressed a button, something happened. When I hesitated, the world waited.
+    </p>
+    <p>
+      That tiny loop of input and response felt like a secret language. I did not have the words for it then, but now
+      I know: it was interactivity, the heartbeat of game design. It whispered to me that I could one day be the one
+      who decided what happened when someone pressed a button.
+    </p>
+    <p>
+      Years later, when I opened Unity for the first time, I felt that same thrill. A blank scene, a camera, a light,
+      and an empty hierarchy. It looked simple, but I knew it was a doorway. Unreal Engine greeted me with a different
+      kind of power, a cinematic promise, a world-builder’s dream.
+    </p>
+    <p>
+      I told myself: I will learn this. I will build worlds. I will make systems that respond, stories that unfold,
+      and experiences that linger long after the credits roll.
+    </p>
+
+    <ul class="choice-list">
+      <li>
+        <a href="#page4" data-page="page4">
+          Focus on Unity, the engine that first felt like home.
+        </a>
+      </li>
+      <li>
+        <a href="#page5" data-page="page5">
+          Focus on Unreal Engine, the engine that challenged me to think bigger.
+        </a>
+      </li>
+      <li>
+        <a href="#page1" data-page="page1">
+          Return to the present moment at my desk.
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- PAGE 3 -->
+  <section id="page3" class="page">
+    <h2>Page 3: The Present Build</h2>
+    <p>
+      The present is a strange mix of ambition and fatigue. My project folder is a labyrinth of prototypes, half-finished
+      mechanics, and experiments that never quite found their final form. Yet I do not see them as failures. I see them
+      as iterations, as versions of myself learning how to speak more clearly in the language of games.
+    </p>
+    <p>
+      I open my current project: a narrative-driven experience about a game designer who loves creating games. It is
+      recursive, self-aware, and deeply personal. I am building it in layers: first the structure, then the systems,
+      then the polish. Just like this hypertext narrative.
+    </p>
+    <p>
+      I ask myself a question: what matters most right now? Is it the technical mastery, the emotional resonance, or
+      the simple joy of making something that works?
+    </p>
+
+    <ul class="choice-list">
+      <li>
+        <a href="#page6" data-page="page6">
+          I decide to focus on emotional resonance and storytelling.
+        </a>
+      </li>
+      <li>
+        <a href="#page7" data-page="page7">
+          I decide to focus on systems, mechanics, and elegant design.
+        </a>
+      </li>
+      <li>
+        <a href="#pageMiniGame" data-page="pageMiniGame">
+          I take a break and test a small mini game I built.
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- PAGE 4 -->
+  <section id="page4" class="page">
+    <h2>Page 4: Unity, My First Workshop</h2>
+    <p>
+      Unity felt like a workshop where I could pick up tools and immediately start building. I dragged objects into the
+      scene, attached scripts, and watched them come alive. The first time I wrote a simple script to move a character,
+      I felt like I had unlocked a new superpower.
+    </p>
+    <p>
+      I learned about components, game loops, and the delicate dance between performance and beauty. I made small
+      prototypes: a platformer that barely held together, a top-down survival game with clumsy controls, a casual
+      puzzle game that surprised me by feeling genuinely satisfying.
+    </p>
+    <p>
+      Each prototype was a conversation between my curiosity and my limitations. I would ask, can I do this? The engine
+      would answer, yes, but you must learn how.
+    </p>
+
+    <ul class="choice-list">
+      <li>
+        <a href="#page6" data-page="page6">
+          Let these Unity experiments shape my narrative voice.
+        </a>
+      </li>
+      <li>
+        <a href="#page3" data-page="page3">
+          Jump back to the present project, carrying Unity’s lessons with me.
+        </a>
+      </li>
+      <li>
+        <a href="#pageMiniGame" data-page="pageMiniGame">
+          Channel this energy into a small, self-contained mini game.
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- PAGE 5 -->
+  <section id="page5" class="page">
+    <h2>Page 5: Unreal, The Cinematic Forge</h2>
+    <p>
+      Unreal Engine greeted me with a different kind of gravity. The lighting, the materials, the blueprints—it all
+      felt like stepping onto a grand stage. I was not just placing objects; I was directing scenes, orchestrating
+      experiences that could feel larger than life.
+    </p>
+    <p>
+      Blueprints taught me to think visually about logic. I connected nodes, watched data flow, and realized that
+      systems could be both powerful and readable. I experimented with first-person exploration, atmospheric lighting,
+      and subtle environmental storytelling.
+    </p>
+    <p>
+      In Unreal, I felt the weight of possibility. I could build worlds that felt cinematic, that invited players to
+      wander and wonder. It pushed me to raise my standards, to think about how every detail contributed to the whole.
+    </p>
+
+    <ul class="choice-list">
+      <li>
+        <a href="#page7" data-page="page7">
+          Let Unreal’s sense of scale shape my systems and mechanics.
+        </a>
+      </li>
+      <li>
+        <a href="#page3" data-page="page3">
+          Return to the present, blending Unity’s agility with Unreal’s grandeur.
+        </a>
+      </li>
+      <li>
+        <a href="#pageMiniGame" data-page="pageMiniGame">
+          Build a small, focused mini game as a tribute to both engines.
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- PAGE 6 -->
+  <section id="page6" class="page">
+    <h2>Page 6: Choosing Emotion First</h2>
+    <p>
+      I decide that emotion comes first. I want players to feel something when they move through my worlds. I want them
+      to sense the care in every detail, the intention behind every choice. I want them to feel that someone, somewhere,
+      poured their heart into this experience.
+    </p>
+    <p>
+      I write in the first person, not just because it is my story, but because I want the player to feel close to my
+      thoughts. I talk about the late nights, the small victories, the moments when a bug finally yields to persistence.
+      I talk about the fear that my work will not be good enough, and the stubborn hope that I will keep improving.
+    </p>
+    <p>
+      I realize that my love of creating games is not just about the final product. It is about the process, the
+      learning, the quiet joy of solving a problem that once felt impossible. It is about the way my mind lights up
+      when I see a system working in harmony.
+    </p>
+
+    <ul class="choice-list">
+      <li>
+        <a href="#page8" data-page="page8">
+          Let this emotional focus lead to an ending where I inspire others.
+        </a>
+      </li>
+      <li>
+        <a href="#page9" data-page="page9">
+          Let this emotional focus lead to an ending where I quietly keep creating, unseen but fulfilled.
+        </a>
+      </li>
+      <li>
+        <a href="#pageMiniGame" data-page="pageMiniGame">
+          Capture this feeling in a playful mini game.
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- PAGE 7 -->
+  <section id="page7" class="page">
+    <h2>Page 7: Choosing Systems and Craft</h2>
+    <p>
+      I decide that systems and mechanics are my guiding star. I want my games to feel tight, responsive, and
+      thoughtfully designed. I want players to sense that every rule, every interaction, has been considered and
+      refined.
+    </p>
+    <p>
+      I dive into design patterns, architecture, and optimization. I think about how to make my code clean and
+      maintainable, how to build tools that will help me create faster and smarter. I treat my projects like living
+      organisms, with systems that must stay in balance.
+    </p>
+    <p>
+      Yet even here, emotion is never far away. A well-crafted system can evoke powerful feelings: tension, relief,
+      curiosity, mastery. I realize that my love of creating games lives at the intersection of logic and feeling,
+      structure and spontaneity.
+    </p>
+
+    <ul class="choice-list">
+      <li>
+        <a href="#page8" data-page="page8">
+          Let this focus on craft lead to an ending where I become a respected architect of experiences.
+        </a>
+      </li>
+      <li>
+        <a href="#page9" data-page="page9">
+          Let this focus on craft lead to an ending where I quietly build a library of personal masterpieces.
+        </a>
+      </li>
+      <li>
+        <a href="#pageMiniGame" data-page="pageMiniGame">
+          Test my design instincts in a small, replayable mini game.
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- PAGE Mini Game -->
+  <section id="pageMiniGame" class="page">
+    <h2>Mini Game: Prototype of Persistence</h2>
+    <p>
+      Before I choose my ending, I decide to build and play a small game. It is simple by design, but it carries a
+      piece of my philosophy: iteration, learning, and the quiet thrill of progress.
+    </p>
+    <p>
+      In this mini game, you play as me in abstract form. You are trying to ship a tiny prototype. Each turn, you
+      choose to either <span class="label">Refine</span> your idea or <span class="label">Publish</span> it. The goal
+      is to reach a sweet spot of quality before your energy runs out.
+    </p>
+
+    <div class="game-container">
+      <div>
+        <span class="label">Quality:</span> <span id="gameQuality">0</span> /
+        <span class="label">Target:</span> <span id="gameTarget">15</span><br />
+        <span class="label">Energy:</span> <span id="gameEnergy">10</span><br />
+        <span class="label">Attempts:</span> <span id="gameAttempts">0</span>
+      </div>
+
+      <div class="button-row">
+        <button id="btnRefine">Refine</button>
+        <button id="btnPublish">Publish</button>
+        <button id="btnReset">Reset</button>
+      </div>
+
+      <div class="game-log" id="gameLog">
+        Mini game log:
+      </div>
+    </div>
+
+    <p class="meta-note">
+      This mini game is intentionally small and self-contained, like a prototype in a real project. It is not about
+      winning perfectly; it is about feeling the rhythm of iteration and decision-making.
+    </p>
+
+    <ul class="choice-list">
+      <li>
+        <a href="#page8" data-page="page8">
+          After playing, I feel inspired to pursue an ending of visible impact and inspiration.
+        </a>
+      </li>
+      <li>
+        <a href="#page9" data-page="page9">
+          After playing, I feel drawn to an ending of quiet, personal fulfillment.
+        </a>
+      </li>
+      <li>
+        <a href="#page10" data-page="page10">
+          I want to see all the endings laid out, like a gallery of possible futures.
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- PAGE 8 -->
+  <section id="page8" class="page">
+    <h2>Page 8: Ending Path – The Visible Legacy</h2>
+    <p>
+      I imagine a future where my games reach far beyond my desk. Players around the world discover my work, share it
+      with friends, and talk about how it made them feel. Some are moved by the stories, others by the mechanics, and
+      some simply by the sense that these games were made with care.
+    </p>
+    <p>
+      I attend conferences, give talks, and share my process openly. I show my early prototypes, my messy whiteboard
+      sketches, my half-finished systems. I want aspiring creators to see that the path is not clean or easy, but it is
+      worth walking.
+    </p>
+    <p>
+      My love of creating games becomes a beacon. People tell me that my work inspired them to start their own projects,
+      to open Unity or Unreal for the first time, to believe that their ideas are worth exploring. I feel a deep,
+      steady gratitude.
+    </p>
+
+    <div class="ending">
+      <p>
+        In this ending, I stand among the titans of game development, not as a distant figure, but as a visible,
+        approachable creator. My games are celebrated and discussed, but what matters most to me is that they carry a
+        piece of my heart into the lives of others.
+      </p>
+      <p>
+        I realize that my true achievement is not fame, but connection. My love of creating games has become a bridge
+        between my imagination and the imaginations of countless players.
+      </p>
+    </div>
+
+    <ul class="choice-list">
+      <li>
+        <a href="#page10" data-page="page10">
+          Step back and view this ending alongside the others.
+        </a>
+      </li>
+      <li>
+        <a href="#page1" data-page="page1">
+          Restart the journey from the beginning, with this ending in mind.
+        </a>
+      </li>
+      <li>
+        <a href="#pageMiniGame" data-page="pageMiniGame">
+          Revisit the mini game as a reminder of humble beginnings.
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- PAGE 9 -->
+  <section id="page9" class="page">
+    <h2>Page 9: Ending Path – The Quiet Artisan</h2>
+    <p>
+      I imagine a different future, one where my games do not necessarily dominate headlines or fill convention halls.
+      Instead, they live in smaller circles, in curated collections, in the hearts of players who stumble upon them and
+      feel an unexpected resonance.
+    </p>
+    <p>
+      I continue to create steadily, almost ritualistically. Each new project is a conversation with myself, a way to
+      explore ideas, emotions, and systems that fascinate me. I release my games without fanfare, trusting that they
+      will find the people who need them.
+    </p>
+    <p>
+      My joy comes from the craft itself: the moment a mechanic finally feels right, the way a scene’s lighting
+      transforms its mood, the satisfaction of refactoring a messy system into something elegant and clear.
+    </p>
+
+    <div class="ending">
+      <p>
+        In this ending, I am a quiet artisan of interactive worlds. My love of creating games is not measured in
+        follower counts or sales charts, but in the deep, personal fulfillment I feel each time I finish a project and
+        whisper to myself, this is honest work.
+      </p>
+      <p>
+        I realize that my legacy may be subtle, but it is real. My games are small constellations in the vast sky of
+        the medium, and that is enough.
+      </p>
+    </div>
+
+    <ul class="choice-list">
+      <li>
+        <a href="#page10" data-page="page10">
+          Step back and view this ending alongside the others.
+        </a>
+      </li>
+      <li>
+        <a href="#page1" data-page="page1">
+          Restart the journey from the beginning, carrying this quiet certainty.
+        </a>
+      </li>
+      <li>
+        <a href="#pageMiniGame" data-page="pageMiniGame">
+          Return to the mini game, embracing iteration as a lifelong companion.
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <!-- PAGE 10 -->
+  <section id="page10" class="page">
+    <h2>Page 10: The Gallery of Endings</h2>
+    <p>
+      I arrive at a quiet mental space, a gallery where my possible futures hang like framed paintings. Each ending is
+      a reflection of the same core truth: I love creating games. The details differ, but the heartbeat is the same.
+    </p>
+    <p>
+      In one frame, I see myself on stage, sharing my journey with a crowd of aspiring developers. In another, I see
+      myself at my desk, headphones on, lost in the flow of building something new. In yet another, I see players
+      scattered across the world, each experiencing my work in their own private way.
+    </p>
+    <p>
+      I realize that these endings are not mutually exclusive. Life is not a single branching path with one true
+      conclusion. It is a series of overlapping routes, revisited choices, and evolving priorities. I can be visible
+      and quiet, ambitious and content, all at different times.
+    </p>
+    <p>
+      What remains constant is the feeling I have right now: the steady, enduring love of creating games. It is the
+      thread that ties every prototype, every late night, every breakthrough together.
+    </p>
+
+    <div class="ending">
+      <p>
+        In this meta-ending, I accept that my story as a game creator is ongoing. There is no final screen, no single
+        definitive conclusion. There is only the next project, the next idea, the next chance to turn imagination into
+        interaction.
+      </p>
+      <p>
+        I close my eyes for a moment, then open them again to the glow of my screen. The editor is waiting. The world
+        is waiting. And I, Christine, am ready to keep creating.
+      </p>
+    </div>
+
+    <ul class="choice-list">
+      <li>
+        <a href="#page1" data-page="page1">
+          Return to the beginning and walk a different path.
+        </a>
+      </li>
+      <li>
+        <a href="#page8" data-page="page8">
+          Revisit the visible legacy ending.
+        </a>
+      </li>
+      <li>
+        <a href="#page9" data-page="page9">
+          Revisit the quiet artisan ending.
+        </a>
+      </li>
+      <li>
+        <a href="#pageMiniGame" data-page="pageMiniGame">
+          Revisit the mini game and remember that every epic begins as a prototype.
+        </a>
+      </li>
+    </ul>
+  </section>
+</main>
+
+<footer>
+  Hypertext narrative and mini game concept based on Christine’s love of creating games.
+</footer>
 
 <script>
-const canvas=document.getElementById("game");
-if(canvas){
+  // Simple page navigation without reloading
+  (function () {
+    function showPage(id) {
+      var pages = document.querySelectorAll(".page");
+      pages.forEach(function (p) {
+        p.classList.remove("active");
+      });
+      var target = document.getElementById(id);
+      if (target) {
+        target.classList.add("active");
+        window.location.hash = id;
+      }
+    }
 
-const ctx=canvas.getContext("2d");
+    document.addEventListener("click", function (e) {
+      var link = e.target.closest("a[data-page]");
+      if (link) {
+        e.preventDefault();
+        var pageId = link.getAttribute("data-page");
+        showPage(pageId);
+      }
+    });
 
-let score=0;
+    // On load, respect hash if present
+    window.addEventListener("load", function () {
+      var hash = window.location.hash.replace("#", "");
+      if (hash && document.getElementById(hash)) {
+        showPage(hash);
+      }
+    });
+  })();
 
-const player={
-x:300,
-y:175,
-r:15
-};
+  // Mini game logic
+  (function () {
+    var qualityEl = document.getElementById("gameQuality");
+    var targetEl = document.getElementById("gameTarget");
+    var energyEl = document.getElementById("gameEnergy");
+    var attemptsEl = document.getElementById("gameAttempts");
+    var logEl = document.getElementById("gameLog");
 
-let idea={
-x:Math.random()*580+10,
-y:Math.random()*330+10,
-r:10
-};
+    var btnRefine = document.getElementById("btnRefine");
+    var btnPublish = document.getElementById("btnPublish");
+    var btnReset = document.getElementById("btnReset");
 
-canvas.addEventListener("mousemove",e=>{
-const rect=canvas.getBoundingClientRect();
-player.x=e.clientX-rect.left;
-player.y=e.clientY-rect.top;
-});
+    var quality, target, energy, attempts, gameOver;
 
-function update(){
+    function log(message) {
+      var line = document.createElement("div");
+      line.textContent = message;
+      logEl.appendChild(line);
+      logEl.scrollTop = logEl.scrollHeight;
+    }
 
-const dx=player.x-idea.x;
-const dy=player.y-idea.y;
-const dist=Math.sqrt(dx*dx+dy*dy);
+    function updateUI() {
+      qualityEl.textContent = quality;
+      targetEl.textContent = target;
+      energyEl.textContent = energy;
+      attemptsEl.textContent = attempts;
+    }
 
-if(dist<player.r+idea.r){
+    function resetGame() {
+      quality = 0;
+      target = 15;
+      energy = 10;
+      attempts = 0;
+      gameOver = false;
+      logEl.textContent = "Mini game log:";
+      updateUI();
+      log("New prototype started. Aim for quality " + target + " before energy runs out.");
+    }
 
-score++;
+    function refine() {
+      if (gameOver) {
+        log("The prototype is already finished. Reset to start a new one.");
+        return;
+      }
+      if (energy <= 0) {
+        log("No energy left to refine. You must publish or reset.");
+        return;
+      }
+      var gain = Math.floor(Math.random() * 4); // 0 to 3
+      quality += gain;
+      energy -= 1;
+      attempts += 1;
+      updateUI();
+      log("Refine: quality +" + gain + ", energy -1.");
 
-document.getElementById("score").textContent=score;
+      if (energy === 0) {
+        log("Energy depleted. You can still publish, but you cannot refine further.");
+      }
+    }
 
-idea.x=Math.random()*580+10;
-idea.y=Math.random()*330+10;
+    function publish() {
+      if (gameOver) {
+        log("The prototype is already finished. Reset to start a new one.");
+        return;
+      }
+      attempts += 1;
+      updateUI();
 
-if(score>=15){
-document.getElementById("message").innerHTML=
-"<strong>You Win!</strong><br>Christine has gathered enough inspiration to create her next game.";
-}
-}
+      var diff = Math.abs(target - quality);
+      if (quality >= target && diff <= 3) {
+        log("Publish: You shipped a strong prototype close to your target quality. A satisfying release.");
+      } else if (quality < target) {
+        log("Publish: The prototype feels undercooked, but you learned a lot for the next iteration.");
+      } else {
+        log("Publish: The prototype is polished, maybe more than it needed to be. You spent extra time, but it shines.");
+      }
+      log("Game over. Total attempts: " + attempts + ". Quality: " + quality + ", Target: " + target + ".");
+      gameOver = true;
+    }
 
-ctx.clearRect(0,0,600,350);
-
-ctx.beginPath();
-ctx.arc(player.x,player.y,player.r,0,Math.PI*2);
-ctx.fillStyle="gold";
-ctx.fill();
-
-ctx.beginPath();
-ctx.arc(idea.x,idea.y,idea.r,0,Math.PI*2);
-ctx.fillStyle="cyan";
-ctx.fill();
-
-requestAnimationFrame(update);
-}
-
-update();
-
-}
+    if (btnRefine && btnPublish && btnReset) {
+      btnRefine.addEventListener("click", refine);
+      btnPublish.addEventListener("click", publish);
+      btnReset.addEventListener("click", resetGame);
+      resetGame();
+    }
+  })();
 </script>
-
 </body>
 </html>
